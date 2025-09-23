@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="post-test-apd-1"/>
+        <attribute name="authors" value="rizal"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2025-09-23 09:01:03 PM"/>
+        <attribute name="created" value="cml6YWw7WkFMOzIwMjUtMDktMjE7MTI6NDc6NTQgQU07MjA1MA=="/>
+        <attribute name="edited" value="cml6YWw7WkFMOzIwMjUtMDktMjE7MDI6MTE6MjEgQU07MTsyMTQy"/>
+        <attribute name="edited" value="ZmlyemE7RklSWkE7MjAyNS0wOS0yMzswOTowMTowMyBQTTs0OzIzMTE="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nama, nim" type="String" array="False" size=""/>
+            <declare name="harga, i" type="Integer" array="False" size=""/>
+            <declare name="menu" type="String" array="True" size="3"/>
+            <declare name="pajak" type="Integer" array="True" size="3"/>
+            <declare name="pajakpersen, total" type="Real" array="False" size=""/>
+            <output expression="&quot;Masukan nama : &quot;" newline="True"/>
+            <input variable="nama"/>
+            <output expression="&quot;Masukan nim : &quot;" newline="True"/>
+            <input variable="nim"/>
+            <output expression="&quot;Masukan Harga Makanan : &quot;" newline="True"/>
+            <input variable="harga"/>
+            <assign variable="menu[0]" expression="&quot;Pecel Lele&quot;"/>
+            <assign variable="menu[1]" expression="&quot;Mie Ayam&quot;"/>
+            <assign variable="menu[2]" expression="&quot;Nasi Padang&quot;"/>
+            <assign variable="pajak[0]" expression="5"/>
+            <assign variable="pajak[1]" expression="8"/>
+            <assign variable="pajak[2]" expression="10"/>
+            <output expression="&quot;------------------------------------------------------------------------------------------&quot;" newline="True"/>
+            <output expression="nama &amp; &quot; Dengan Nim &quot; &amp; nim &amp; &quot; ingin membeli makanan seharga Rp&quot; &amp; harga" newline="True"/>
+            <output expression="&quot;Menu       pajak      Total Harga&quot;" newline="True"/>
+            <output expression="&quot;------------------------------------------------------------------------------------------&quot;" newline="True"/>
+            <for variable="i" start="0" end="2" direction="inc" step="1">
+                <assign variable="Pajak" expression="harga * (pajak[i] / 100)"/>
+                <assign variable="total" expression="harga + pajak"/>
+                <output expression="menu[i] &amp; &quot;      &quot; &amp; pajak[i] &amp; &quot;%         Rp&quot; &amp; total" newline="True"/>
+            </for>
+            <output expression="&quot;------------------------------------------------------------------------------------------&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
