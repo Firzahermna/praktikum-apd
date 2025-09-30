@@ -5,7 +5,7 @@ else:
     status = "Tidak Lulus"
 print(status)
 # output
-Lulus
+Lulus    
 # Menggunakan Ternary Operator
 nilai = 70
 status = "Lulus" if nilai >= 60 else "Tidak Lulus"
