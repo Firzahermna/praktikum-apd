@@ -1,6 +1,5 @@
 import os
 
-# Data awal user dan barang
 user = [
     ["admin", "123", "admin"],
     ["firza", "090", "user"]
@@ -27,7 +26,7 @@ while menu_utama:
     print("3. Keluar")
     menu = input("Pilih menu: ")
 
-    # LOGIN
+    
     if menu == "1":
         os.system("cls" if os.name == "nt" else "clear")
         print("=== LOGIN ===")
@@ -127,7 +126,7 @@ while menu_utama:
                     elif pilih == "6":
                         menu_admin = False
 
-            # USER
+            
             else:
                 menu_user = True
                 while menu_user:
@@ -189,7 +188,7 @@ while menu_utama:
                     elif pilih_user == "4":
                         menu_user = False
 
-    # REGISTER
+    
     elif menu == "2":
         os.system("cls" if os.name == "nt" else "clear")
         print("=== REGISTER AKUN ===")
