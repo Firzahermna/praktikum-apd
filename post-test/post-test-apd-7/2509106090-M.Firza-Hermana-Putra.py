@@ -1,6 +1,6 @@
 import os
 
-# === Variabel Global ===
+
 users = {
     "admin": {"password": "123", "role": "admin"},
     "firza": {"password": "090", "role": "user"}
@@ -16,26 +16,24 @@ barang = {
     8: {"nama": "Monitor kaciw 9000hz", "harga": 900000000, "stok": 1, "kategori": "Display"}
 }
 keranjang = []
-total_penjualan = 0  # variabel global tambahan
+total_penjualan = 0  
 
-# === Prosedur tanpa return ===
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
 def tampilkan_barang():
-    print("=== DAFTAR BARANG ===")
+    print("========== DAFTAR BARANG ==========")
     for kode, info in barang.items():
         status = "Habis" if info["stok"] == 0 else f"{info['stok']} stok"
         print(f"{kode}. {info['nama']} - Rp{info['harga']} | {status} | Kategori: {info['kategori']}")
 
-# === Fungsi tanpa parameter ===
 def hitung_total_keranjang():
     total = 0
     for item in keranjang:
         total += item["harga"]
     return total
 
-# === Fungsi dengan parameter ===
+
 def kurangi_stok(kode_barang, jumlah):
     try:
         if barang[kode_barang]["stok"] >= jumlah:
@@ -48,12 +46,10 @@ def kurangi_stok(kode_barang, jumlah):
         print("Kode barang tidak ditemukan ")
         return False
 
-# === Prosedur tambahan (tanpa return) ===
 def tampilkan_total_pendapatan():
     global total_penjualan
     print(f"\n Total Pendapatan Toko Saat Ini: Rp{total_penjualan}")
 
-# === Fungsi dengan parameter untuk pengecekan login ===
 def cek_login(username, password):
     try:
         if username in users and users[username]["password"] == password:
@@ -64,11 +60,10 @@ def cek_login(username, password):
         print(f"Terjadi kesalahan login: {e}")
         return False
 
-
 menu_utama = True
 while menu_utama:
     clear()
-    print("=== TOKO PERALATAN GAMING ===")
+    print("========== TOKO PERALATAN GAMING ==========")
     print("1. Login")
     print("2. Register")
     print("3. Keluar")
@@ -80,9 +75,9 @@ while menu_utama:
         nama = input("Masukkan username: ")
         sandi = input("Masukkan password: ")
 
-        if cek_login(nama, sandi):  # memakai fungsi dengan parameter
+        if cek_login(nama, sandi):  
             print("Login berhasil!")
-            input("Tekan Enter untuk lanjut...")
+            input("Tekan Enter untuk lanjut")
             role = users[nama]["role"]
 
             if role == "admin":
@@ -108,7 +103,7 @@ while menu_utama:
                         clear()
                         print("=== TAMBAH BARANG ===")
                         try:
-                            # variabel lokal
+
                             nama_brg = input("Nama barang: ")
                             harga_brg = input("Harga barang: ")
                             stok_brg = input("Stok barang: ")
@@ -126,7 +121,7 @@ while menu_utama:
                                 print("Harga dan stok harus berupa angka!")
                         except Exception as e:
                             print("Terjadi kesalahan saat menambah barang:", e)
-                        input("Tekan Enter...")
+                        input("Tekan Enter")
 
                     elif pilih == "3":
                         clear()
@@ -166,18 +161,18 @@ while menu_utama:
                                 print("Kode tidak ditemukan!")
                         except Exception as e:
                             print("Kesalahan:", e)
-                        input("Tekan Enter...")
+                        input("Tekan Enter")
 
                     elif pilih == "5":
                         clear()
-                        print("=== DAFTAR USER ===")
+                        print("========== DAFTAR USER ==========")
                         for i, (u, info) in enumerate(users.items(), 1):
                             print(f"{i}. {u} - {info['role']}")
-                        input("Tekan Enter...")
+                        input("Tekan Enter")
 
                     elif pilih == "6":
-                        tampilkan_total_pendapatan()  # prosedur tanpa return
-                        input("Tekan Enter...")
+                        tampilkan_total_pendapatan()
+                        input("Tekan Enter")
 
                     elif pilih == "7":
                         menu_admin = False
@@ -186,7 +181,7 @@ while menu_utama:
                 menu_user = True
                 while menu_user:
                     clear()
-                    print(f"=== MENU USER ({nama}) ===")
+                    print(f"========== MENU USER ({nama}) ==========")
                     print("1. Lihat Barang")
                     print("2. Beli Barang")
                     print("3. Lihat Keranjang & Bayar")
@@ -207,24 +202,24 @@ while menu_utama:
                                 pass
                             elif beli in barang:
                                 if barang[beli]["stok"] > 0:
-                                    if kurangi_stok(beli, 1):  # menggunakan fungsi dengan parameter
+                                    if kurangi_stok(beli, 1): 
                                         keranjang.append(barang[beli])
                                         print(f"{barang[beli]['nama']} ditambahkan ke keranjang!")
                                 else:
-                                    print("Stok barang habis!")
+                                    print("Stok barang habis")
                             else:
-                                print("Kode barang tidak ada!")
+                                print("Kode barang tidak ada")
                         except Exception as e:
                             print("Error saat pembelian:", e)
-                        input("Tekan Enter...")
+                        input("Tekan Enter")
 
                     elif pilih_user == "3":
                         clear()
-                        print("=== KERANJANG BELANJA ===")
+                        print("========== KERANJANG BELANJA ==========")
                         if not keranjang:
                             print("Keranjang masih kosong.")
                         else:
-                            total = hitung_total_keranjang()  # fungsi tanpa parameter
+                            total = hitung_total_keranjang()
                             for i, item in enumerate(keranjang, 1):
                                 print(f"{i}. {item['nama']} - Rp{item['harga']}")
                             print("---------------------")
@@ -232,7 +227,7 @@ while menu_utama:
                             print("---------------------")
                             bayar = input("Bayar sekarang? (ya/no): ")
                             if bayar.lower() == "ya":
-                                total_penjualan += total  # global var dipakai
+                                total_penjualan += total 
                                 print("Pembayaran berhasil! Terima kasih telah berbelanja")
                                 keranjang.clear()
                             else:
